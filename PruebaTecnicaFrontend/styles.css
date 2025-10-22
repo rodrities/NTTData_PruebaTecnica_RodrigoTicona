@@ -1,0 +1,27 @@
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+    gap: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.card {
+    background-color: rgb(144, 205, 246);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.nombre {
+    font-weight: bold;
+}
+
+.data-texto2 {
+    color: rgba(66, 66, 66, 0.918);
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Prueba Tecnica NTT Data</title>
+</head>
+<body>
+    <h1>Lista de 10 Personas</h1>
+    <div id="personas" class="container"></div>
+
+<script>
+    async function getPersonas() {
+        try {
+            const response = await fetch("http://localhost:9090/personas");
+            if ( !response.ok) {
+                throw new Error("Error ak obtener datos");
+
+            }
+            const data = await response.json();
+            mostrarPersonas(data);
+        } catch (error) {
+            document.getElementById("personas").innerHTML = "<p>Eror al cargar personas</p>";
+            console.error(error);
+        } 
+    }
+
+    function mostrarPersonas(lista) {
+        const contenedor = document.getElementById("personas");
+        contenedor.innerHTML = "";
+
+        lista.forEach(p=> {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.innerHTML = `
+            <img src="${p.foto}" alt="" class="foto"/>
+            <div class="nombre"> ${p.nombre}</div>
+            <div class="data-texto2"> ${p.pais}</div>
+            <div class="data-texto2"> ${p.genero}</div>
+            <div class="data-texto2"> ${p.correo}</div>
+            <div class="data-texto2"> ${p.fechaNacimiento}</div>
+         `;
+         contenedor.appendChild(card);
+            });
+    }
+
+    getPersonas();
+
+</script>
+
+</body>
+</html>
